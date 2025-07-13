@@ -6,15 +6,15 @@ def train(model: Neural_Network, X_train, Y_train, X_test, Y_test, logger=None, 
     
     for epoch in range(epochs):
 
-        Z1, A1, Z2, A2 = model.forward(X_train)
-        model.backward(X_train, Y_train, Z1, A1, Z2, A2)
+        A2 = model.forward(X_train)
+        model.backward(X_train, Y_train)
 
-        if epoch % log_every == 0 or epoch == epoch - 1 and logging == True:
+        if epoch % log_every == 0 or epoch == epoch - 1 and logging == True and logger:
             train_acc = accuracy(A2, Y_train)
 
-            _, _, _, A2_test = model.forward(X_test)
+            A2_test = model.forward(X_test)
             test_acc = accuracy(A2_test, Y_test)
-            loss = cross_entropy_loss(Y_train, A2)
+            training_loss = cross_entropy_loss(Y_train, A2)
 
             if logger:
-                logger.log(epoch, loss, train_acc, test_acc)
+                logger.log(epoch, training_loss, train_acc, test_acc)
