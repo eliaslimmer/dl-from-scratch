@@ -1,0 +1,5 @@
+numpy
+matplotlib
+
+# for the dataset
+keras.datasets
