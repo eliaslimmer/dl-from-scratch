@@ -1,5 +1,5 @@
 from model.neural_net import Neural_Network
-from utils.utils import accuracy, cross_entropy_loss
+from utils.metrics import accuracy, cross_entropy_loss
 
 
 def train(model: Neural_Network, X_train, Y_train, X_test, Y_test, logger=None, epochs=10, log_every=10, logging=True):
