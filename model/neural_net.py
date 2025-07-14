@@ -1,5 +1,5 @@
 import numpy as np
-from activations import reLU, softmax, reLuDerivative
+from utils.activations import reLU, softmax, reLuDerivative
   
 # this is a multi class classification network
 class Neural_Network:
