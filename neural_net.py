@@ -1,9 +1,9 @@
 import numpy as np
 from activations import reLU, softmax, reLuDerivative
   
-
+# this is a multi class classification network
 class Neural_Network:
-    def __init__(self, input_layer_size, output_layer_size, hidden_layer_size, learning_rate=.1, optimizer=None):
+    def __init__(self, input_layer_size, hidden_layer_size, output_layer_size, learning_rate=.1, optimizer=None):
         self.optimizer = optimizer
         self.learning_rate = learning_rate
 
@@ -33,6 +33,7 @@ class Neural_Network:
 
         return self.A2
 
+    # I want to understand this deeper and provide some useful annotations
     def backward(self, X, Y):
         """
         X: (batch_size, input_size)
