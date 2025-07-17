@@ -19,7 +19,6 @@ class TrainingLogger:
 
         N = len(self.train_accuracies)
         x = np.arange(N) * 10
-
         plt.plot(x, self.train_accuracies, label="train accuracy")
         plt.plot(x, self.test_accuracies, label="test accuracy")
         plt.xlabel("Epoch")

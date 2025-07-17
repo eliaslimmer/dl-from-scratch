@@ -10,5 +10,5 @@ def softmax(Z):
     expZ = np.exp(Z - np.max(Z, axis=0, keepdims=True))
     return expZ / np.sum(expZ, axis=0, keepdims=True)
 
-def softmaxDerivative(Z):
-    return softmax(Z) * (1 - softmax(Z))
+# def softmaxDerivative(Z):
+#     return softmax(Z) * (1 - softmax(Z))

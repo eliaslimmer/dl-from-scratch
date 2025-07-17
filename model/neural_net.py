@@ -1,7 +1,18 @@
 import numpy as np
 from utils.activations import reLU, softmax, reLuDerivative
   
-# this is a multi class classification network
+# TODOS
+# - write nice comments especially for backprop
+# - add a direct output function that uses argmax
+# - write an optimizer (like adam)
+# - add some markdown comments about how this is a classification network
+# - look if the folders are good and if I should rename anything maybe 
+# - update logger to add x coordinate and maybe even add some other useful metrics / plots
+# - think of some notebook experiments I could do: Overfitting (make dataset small?), Adam vs no Adam
+# - maybe add a batch trainings loop and the option for stochastic gradient descent
+# - train on another dataset like breast cancer detection? or some dataset where you need multi class classification
+# - if possible run notebooks locally - shouldnt be that hard right??? just need to setup an environment somehow :(
+
 class Neural_Network:
     def __init__(self, input_layer_size, hidden_layer_size, output_layer_size, learning_rate=.1, optimizer=None):
         self.optimizer = optimizer
@@ -29,6 +40,8 @@ class Neural_Network:
         self.A1 = reLU(self.Z1)
 
         self.Z2 = np.dot(self.W2, self.A1) + self.b2
+        
+        # using softmax for final multi classification layer
         self.A2 = softmax(self.Z2)
 
         return self.A2
