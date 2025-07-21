@@ -40,13 +40,13 @@ class Neural_Network:
         self.A1 = reLU(self.Z1)
 
         self.Z2 = np.dot(self.W2, self.A1) + self.b2
-        
+
         # using softmax for final multi classification layer
         self.A2 = softmax(self.Z2)
 
         return self.A2
 
-    # I want to understand this deeper and provide some useful annotations
+
     def backward(self, X, Y):
         """
         X: (batch_size, input_size)
@@ -55,6 +55,7 @@ class Neural_Network:
 
         m = X.shape[1]
 
+        # cross-entropy-max as loss function with softmax derivative
         dZ2 = self.A2 - Y
 
         dW2 = (1 / m) * np.dot(dZ2, self.A1.T)
@@ -67,6 +68,7 @@ class Neural_Network:
         db1 = (1 / m) * np.sum(dZ1, axis=1, keepdims=True)
 
         if self.optimizer:
+            # update
             self.optimizer.update()
         else:
             self.update_parameters(dW1, db1, dW2, db2)
