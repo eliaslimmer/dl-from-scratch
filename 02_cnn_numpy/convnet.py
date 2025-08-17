@@ -12,7 +12,7 @@ class Conv2D:
     def __init__(self):
         pass
 
-    def foreward(self):
+    def forward(self):
         pass
 
     def backward(self):
@@ -20,22 +20,23 @@ class Conv2D:
 
 
 class ReLu:
-    def foreward(self):
-        pass
-
-    def backward(self):
-        pass
+    def forward(self, x):
+        self.mask = x>0
+        return np.maximum(0, x)
+    
+    def backward(self, d_out):
+        return d_out * self.mask
 
 
 class MaxPool2D:
-    def foreward(self):
+    def forward(self):
         pass
 
     def backward(self):
         pass
 
 class Flatten:
-    def foreward(self):
+    def forward(self):
         pass
 
     def backward(self):
@@ -43,10 +44,11 @@ class Flatten:
 
 
 class Dense:
-    def __init__(self):
-        pass
+    def __init__(self, in_dim, out_dim):
+        self.W = np.random.randn(out_dim, in_dim) * 0.1
+        self.b = np.zeroes((out_dim, 1))
 
-    def foreward(self):
+    def forward(self):
         pass
 
     def backward(self):
@@ -59,7 +61,7 @@ class SimpleCNN:
     def __init__(self):
         pass
 
-    def foreward(self):
+    def forward(self):
         pass
 
     def backward(self):
