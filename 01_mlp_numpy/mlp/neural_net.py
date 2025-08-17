@@ -11,7 +11,6 @@ from utils.activations import reLU, softmax, reLuDerivative
 # - think of some notebook experiments I could do: Overfitting (make dataset small?), Adam vs no Adam
 # - maybe add a batch trainings loop and the option for stochastic gradient descent
 # - train on another dataset like breast cancer detection? or some dataset where you need multi class classification
-# - if possible run notebooks locally - shouldnt be that hard right??? just need to setup an environment somehow :(
 
 class Neural_Network:
     def __init__(self, input_layer_size, hidden_layer_size, output_layer_size, learning_rate=.1, optimizer=None):
@@ -22,13 +21,16 @@ class Neural_Network:
         self.output_layer_size = output_layer_size
         self.hidden_layer_size = hidden_layer_size
 
-        # Initialize weights with small random values to keep activations stable.
         # He initialization might be better
         self.W1 = np.random.randn(self.hidden_layer_size, self.input_layer_size) * 0.01
         self.W2 = np.random.randn(self.output_layer_size, self.hidden_layer_size) * 0.01
 
         self.b1 = np.zeros((self.hidden_layer_size, 1))
         self.b2 = np.zeros((self.output_layer_size, 1))
+
+    def predict(self, X):
+        A2 = self.forward(X)
+        return np.argmax(A2, axis=0) 
 
 
     def forward(self, X):
@@ -41,7 +43,7 @@ class Neural_Network:
 
         self.Z2 = np.dot(self.W2, self.A1) + self.b2
 
-        # using softmax for final multi classification layer
+        # multi classification
         self.A2 = softmax(self.Z2)
 
         return self.A2
