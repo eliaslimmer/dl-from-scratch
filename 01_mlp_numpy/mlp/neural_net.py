@@ -1,16 +1,6 @@
 import numpy as np
 from utils.activations import reLU, softmax, reLuDerivative
-  
-# TODOS
-# - write nice comments especially for backprop
-# - add a direct output function that uses argmax
-# - write an optimizer (like adam)
-# - add some markdown comments about how this is a classification network
-# - look if the folders are good and if I should rename anything maybe 
-# - update logger to add x coordinate and maybe even add some other useful metrics / plots
-# - think of some notebook experiments I could do: Overfitting (make dataset small?), Adam vs no Adam
-# - maybe add a batch trainings loop and the option for stochastic gradient descent
-# - train on another dataset like breast cancer detection? or some dataset where you need multi class classification
+
 
 class Neural_Network:
     def __init__(self, input_layer_size, hidden_layer_size, output_layer_size, learning_rate=.1, optimizer=None):
