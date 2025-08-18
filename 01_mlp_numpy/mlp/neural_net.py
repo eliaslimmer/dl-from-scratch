@@ -1,6 +1,7 @@
 import numpy as np
 from utils.activations import reLU, softmax, reLuDerivative
 
+# refactoring broke some imports ...
 
 class Neural_Network:
     def __init__(self, input_layer_size, hidden_layer_size, output_layer_size, learning_rate=.1, optimizer=None):
